@@ -118,7 +118,7 @@ final class BacklightScheduleManager {
     private func release() {
         guard isForcingOff else { return }
 
-        if let restoreLevel {
+        if let restoreLevel, restoreLevel > 0 {
             backlight.set(restoreLevel, fadeMilliseconds: Self.fadeMilliseconds)
         }
 
