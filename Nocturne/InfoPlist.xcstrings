@@ -1,0 +1,23 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSLocationWhenInUseUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nocturne uses your location to calculate local sunrise and sunset times."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nocturne usa la tua posizione per calcolare l'alba e il tramonto locali."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -90,6 +90,10 @@ Nocturne uses a private Apple framework to reach the keyboard backlight, because
 
 It records what it changed, so the next launch puts your brightness, dim timer and ambient light setting back rather than leaving the keyboard dark.
 
+### Translations
+
+Nocturne is available in English and Italian. Translations live in `Nocturne/Localizable.xcstrings` and `Nocturne/InfoPlist.xcstrings`, which open as string catalogs in Xcode. Adding a language is a self-contained contribution — pick it in the catalog editor, fill in the values, and add the language code to the project's known regions.
+
 ### License
 
 Nocturne is released under the [PolyForm Noncommercial License 1.0.0](LICENSE). You're free to use, modify and share it for any noncommercial purpose. Selling it, or using it as part of a commercial product or service, is not permitted.

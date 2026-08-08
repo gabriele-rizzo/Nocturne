@@ -21,7 +21,7 @@ struct ScheduleView: View {
                 Picker("From", selection: startHour) { hours(excluding: window.end.hour) }
                 Picker("To", selection: endHour) { hours(excluding: window.start.hour) }
             } label: {
-                Text(customTitle)
+                customTitle
             }
             
             if scheduler.needsLocation {
@@ -34,18 +34,30 @@ struct ScheduleView: View {
 
     private var window: DayWindow { scheduler.activation.window }
 
-    private var customTitle: String {
-        let title = ActivationMode.custom.title
+    private var customTitle: Text {
+        let title = Text(ActivationMode.custom.title)
 
         guard scheduler.activation.mode == .custom else { return title }
 
-        return "✓ \(title)"
+        return Text(verbatim: "✓ ") + title
     }
 
     private func hours(excluding conflict: Int) -> some View {
         ForEach((0..<24).filter { $0 != conflict }, id: \.self) { hour in
-            Text(String(format: "%02d:00", hour)).tag(hour)
+            Text(label(hour)).tag(hour)
         }
+    }
+
+    private func label(_ hour: Int) -> String {
+        var components = DateComponents()
+        components.year = 2000
+        components.month = 1
+        components.day = 1
+        components.hour = hour
+
+        guard let date = Calendar.current.date(from: components) else { return "" }
+
+        return date.formatted(.dateTime.hour().minute())
     }
 
     private func selection(_ mode: ActivationMode) -> Binding<Bool> {

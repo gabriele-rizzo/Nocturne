@@ -5,8 +5,10 @@
 //  Created by Gabriele Rizzo on 07/08/26.
 //
 
+import SwiftUI
+
 extension ActivationMode {
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
             case .on:
                 return "Always on"
