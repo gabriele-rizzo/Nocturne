@@ -9,7 +9,7 @@ import ServiceManagement
 
 extension SMAppService {
     static var launchesAtLogin: Bool {
-        get { mainApp.status == .enabled || mainApp.status == .requiresApproval }
+        get { mainApp.status == .enabled }
         set {
             if newValue {
                 try? mainApp.register()
