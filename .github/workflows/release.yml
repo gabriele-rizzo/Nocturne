@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  dmg:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build DMG
+        run: ./Scripts/make-dmg.sh
+
+      - name: Publish rolling build
+        if: startsWith(github.ref, 'refs/heads/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest Nocturne.dmg \
+            --prerelease \
+            --title "Latest build" \
+            --notes "Automatically built from ${{ github.sha }}. Unsigned, so right-click the app and choose Open the first time."
+
+      - name: Publish tagged release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" Nocturne.dmg \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes
