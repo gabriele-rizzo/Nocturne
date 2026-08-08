@@ -2,4 +2,6 @@ DEVELOPMENT_TEAM =
 CODE_SIGN_STYLE = Automatic
 CODE_SIGN_IDENTITY = -
 
+SPARKLE_PUBLIC_ED_KEY = AJ3geD4/30GIowpuodwzRLIh60PbEfpjXIaXifMQ+mM=
+
 #include? "Local.xcconfig"

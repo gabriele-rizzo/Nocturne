@@ -3,10 +3,12 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-derived=$(mktemp -d)
+derived="build/derived"
 staging=$(mktemp -d)
 scratch=$(mktemp -d)
-trap 'rm -rf "$derived" "$staging" "$scratch"' EXIT
+trap 'rm -rf "$staging" "$scratch"' EXIT
+
+mkdir -p "$derived"
 
 xcodebuild build \
     -project Nocturne.xcodeproj \
@@ -16,6 +18,9 @@ xcodebuild build \
     >/dev/null
 
 app="$derived/Build/Products/Release/Nocturne.app"
+
+rm -rf build/Nocturne.app
+cp -R "$app" build/Nocturne.app
 
 cp -R "$app" "$staging/"
 ln -s /Applications "$staging/Applications"

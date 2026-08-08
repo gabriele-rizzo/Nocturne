@@ -28,11 +28,17 @@ jobs:
             --title "Latest build" \
             --notes "Automatically built from ${{ github.sha }}. Unsigned, so right-click the app and choose Open the first time."
 
+      - name: Build appcast
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: ./Scripts/make-appcast.sh "${GITHUB_REF_NAME}"
+
       - name: Publish tagged release
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" Nocturne.dmg \
+          gh release create "${GITHUB_REF_NAME}" Nocturne.dmg Nocturne.zip appcast.xml \
             --title "${GITHUB_REF_NAME}" \
             --generate-notes
