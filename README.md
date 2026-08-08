@@ -37,7 +37,7 @@ There are four schedules:
 - **Sunset to sunrise**: the backlight is off during daylight and comes back when it gets dark. Uses civil twilight, so it switches when it's actually dark rather than at the moment the sun crosses the horizon.
 - **Custom**: pick the hours the backlight should be off.
 
-<img src="docs/menu.png" alt="The Nocturne menu" width="250"/>
+<img src="docs/menu.png" alt="The Nocturne menu" width="207"/>
 
 Custom schedules are set from the submenu, one hour for the start and one for the end. Windows that run past midnight are fine, so 22:00 to 07:00 works as you'd expect.
 
