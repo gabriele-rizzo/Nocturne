@@ -17,8 +17,7 @@ You can also build it yourself — see [Building](#building).
 
 Nocturne puts an icon in the right side of your menu bar. Click it to choose when the backlight should be off.
 
-> **Screenshot placeholder — menu bar icon**
-> A close crop of the right side of the menu bar showing the Nocturne icon among the system icons, so people can recognise what to look for.
+<img src="docs/menu-bar-icon.png" alt="The Nocturne icon in the menu bar" width="378"/>
 
 There are four schedules:
 
@@ -27,13 +26,11 @@ There are four schedules:
 - **Sunset to sunrise** — the backlight is off during daylight and comes back when it gets dark. Uses civil twilight, so it switches when it's actually dark rather than at the moment the sun crosses the horizon.
 - **Custom** — pick the hours the backlight should be off.
 
-> **Screenshot placeholder — the menu**
-> The menu open, showing the four schedule options with one selected, plus Prevent Dimming and Launch at Login.
+<img src="docs/menu.png" alt="The Nocturne menu" width="250"/>
 
 Custom schedules are set from the submenu, one hour for the start and one for the end. Windows that run past midnight are fine — 22:00 to 07:00 works as you'd expect.
 
-> **Screenshot placeholder — custom submenu**
-> The Custom submenu expanded to show the From and To hour lists, with an hour checked.
+<img src="docs/custom-schedule.png" alt="The Custom submenu, with the From hour list open" width="385"/>
 
 **Prevent Dimming** stops macOS from fading the keyboard backlight after a minute of inactivity. It's off by default, and Nocturne puts your original setting back when it quits.
 
