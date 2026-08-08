@@ -12,7 +12,7 @@ Nocturne is a small menu bar app that turns the built-in keyboard backlight off 
 <!-- [![Website](https://img.shields.io/badge/Website-015FBA?style=flat-square)](https://example.com) -->
 
 > [!NOTE]
-> Nocturne isn't notarized yet, so macOS will say the developer cannot be verified the first time you open it. See [Installation](#installation).
+> Nocturne isn't notarized, so macOS blocks it the first time you open it. [Installation](#installation) has the one time fix.
 
 <a href="https://www.buymeacoffee.com/gabrielerizzo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60" width="217"></a>
 
@@ -20,7 +20,17 @@ Nocturne is a small menu bar app that turns the built-in keyboard backlight off 
 
 Download the latest release, drag Nocturne into your Applications folder, and launch it. It lives in the menu bar and has no window and no Dock icon.
 
-macOS will say the developer cannot be verified, because Nocturne isn't notarized yet. Right-click the app and choose **Open**, then confirm. You only need to do this once.
+The first time you open it, macOS will refuse, saying it cannot check the app for malicious software. This is expected: Nocturne isn't notarized. To let it through, open **System Settings**, go to **Privacy & Security**, and scroll down to the security section. There you'll find a line saying Nocturne was blocked, with an **Open Anyway** button next to it. Click that, confirm with your password or Touch ID, and Nocturne starts.
+
+Control-clicking the app and choosing Open used to work, but macOS 15 removed that shortcut, so System Settings is the way now.
+
+If you'd rather do it from the terminal, this has the same effect:
+
+```
+xattr -dr com.apple.quarantine /Applications/Nocturne.app
+```
+
+Either way you only do it once. Updates install without asking again.
 
 You can also build it yourself. See [Building](#building).
 
