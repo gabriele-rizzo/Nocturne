@@ -19,7 +19,7 @@ app="$derived/Build/Products/Release/Nocturne.app"
 
 cp -R "$app" "$staging/"
 ln -s /Applications "$staging/Applications"
-cp "$app/Contents/Resources/AppIcon.icns" "$staging/.VolumeIcon.icns"
+cp Scripts/VolumeIcon.icns "$staging/.VolumeIcon.icns"
 
 hdiutil create \
     -volname Nocturne \
