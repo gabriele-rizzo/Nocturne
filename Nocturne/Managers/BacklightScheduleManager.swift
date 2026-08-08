@@ -48,6 +48,7 @@ final class BacklightScheduleManager {
     private static let holdKey = "hold"
     private static let dimKey = "preventsDimming"
     private static let dimHoldKey = "dimHold"
+    private static let autoHoldKey = "autoHold"
 
     private static var hold: Double? {
         get { UserDefaults.standard.object(forKey: holdKey) as? Double }
@@ -69,6 +70,15 @@ final class BacklightScheduleManager {
             guard let newValue else { return UserDefaults.standard.removeObject(forKey: dimHoldKey) }
 
             UserDefaults.standard.set(newValue, forKey: dimHoldKey)
+        }
+    }
+
+    private static var autoHold: Bool? {
+        get { UserDefaults.standard.object(forKey: autoHoldKey) as? Bool }
+        set {
+            guard let newValue else { return UserDefaults.standard.removeObject(forKey: autoHoldKey) }
+
+            UserDefaults.standard.set(newValue, forKey: autoHoldKey)
         }
     }
 
@@ -140,6 +150,10 @@ final class BacklightScheduleManager {
 
         restoreLevel = backlight.get()
         Self.hold = restoreLevel
+
+        if Self.autoHold == nil { Self.autoHold = backlight.autoBrightness }
+
+        backlight.autoBrightness = false
         backlight.set(0, fadeMilliseconds: Self.fadeMilliseconds)
         isForcingOff = true
     }
@@ -151,6 +165,9 @@ final class BacklightScheduleManager {
             backlight.set(recoveredLevel, fadeMilliseconds: Self.fadeMilliseconds)
         }
 
+        if let held = Self.autoHold { backlight.autoBrightness = held }
+
+        Self.autoHold = nil
         restoreLevel = nil
         Self.hold = nil
         isForcingOff = false

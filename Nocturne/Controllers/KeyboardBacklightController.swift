@@ -25,6 +25,12 @@ import Foundation
 
     @objc(setIdleDimTime:forKeyboard:)
     func setIdleDimTime(_ seconds: Double, forKeyboard id: UInt64) -> Bool
+
+    @objc(isAutoBrightnessEnabledForKeyboard:)
+    func isAutoBrightnessEnabled(forKeyboard id: UInt64) -> Bool
+
+    @objc(enableAutoBrightness:forKeyboard:)
+    func enableAutoBrightness(_ enabled: Bool, forKeyboard id: UInt64) -> Bool
 }
 
 final class KeyboardBacklightController {
@@ -66,5 +72,10 @@ final class KeyboardBacklightController {
     var idleDimTime: Double {
         get { client.idleDimTime(forKeyboard: keyboardID) }
         set { _ = client.setIdleDimTime(newValue, forKeyboard: keyboardID) }
+    }
+
+    var autoBrightness: Bool {
+        get { client.isAutoBrightnessEnabled(forKeyboard: keyboardID) }
+        set { _ = client.enableAutoBrightness(newValue, forKeyboard: keyboardID) }
     }
 }
