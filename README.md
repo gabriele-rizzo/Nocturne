@@ -49,6 +49,14 @@ Custom schedules are set from the submenu, one hour for the start and one for th
 
 Sunset to sunrise needs your location to work out when the sun rises and sets. Nocturne only ever computes times locally, and nothing is sent anywhere. Because it's a menu bar app, macOS may not show a permission prompt, so the menu offers a shortcut to the Location Services settings if it needs granting.
 
+### Updates
+
+Nocturne keeps itself up to date. It checks for a new version in the background and offers it when there is one, then downloads and installs it in place, so there is nothing to drag into your Applications folder a second time.
+
+**About…** in the menu, or ⌘A, opens a window with the controls. From there you can check straight away, stop the background checks, or let updates install without being asked first.
+
+Every release is signed with a key that only the project holds, and Nocturne installs nothing that fails to match it.
+
 ### Building
 
 Requires macOS 15.7 or later and Xcode 26 or later.
