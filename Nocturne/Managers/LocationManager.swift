@@ -42,6 +42,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
+    @ObservationIgnored
+    private var observer: (any NSObjectProtocol)?
+
     override init() {
         authorization = .notDetermined
         coordinate = Self.stored
@@ -51,6 +54,18 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         authorization = manager.authorizationStatus
+
+        observer = NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil, queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated { self?.refresh() }
+        }
+    }
+
+    deinit {
+        guard let observer else { return }
+
+        NotificationCenter.default.removeObserver(observer)
     }
 
     func request() {

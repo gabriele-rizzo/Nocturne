@@ -28,6 +28,8 @@ struct ScheduleView: View {
                 Button("Enable Location…") { NSWorkspace.shared.open(.locationSettings) }
             }
         }
+
+        Toggle("Prevent Dimming", isOn: $scheduler.preventsDimming)
     }
 
     private var window: DayWindow { scheduler.activation.window }

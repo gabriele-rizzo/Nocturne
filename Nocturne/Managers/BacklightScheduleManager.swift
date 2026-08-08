@@ -31,11 +31,23 @@ final class BacklightScheduleManager {
     @ObservationIgnored
     private var isForcingOff = false
 
+    var preventsDimming: Bool {
+        didSet {
+            guard preventsDimming != oldValue else { return }
+
+            Self.storedPreventsDimming = preventsDimming
+            applyDimming()
+        }
+    }
+
     var needsLocation: Bool { activation.mode == .solar && coordinate == nil }
 
     private static let fadeMilliseconds: Int32 = 500
+    private static let fallbackLevel = 0.5
     private static let key = "activation"
     private static let holdKey = "hold"
+    private static let dimKey = "preventsDimming"
+    private static let dimHoldKey = "dimHold"
 
     private static var hold: Double? {
         get { UserDefaults.standard.object(forKey: holdKey) as? Double }
@@ -43,6 +55,20 @@ final class BacklightScheduleManager {
             guard let newValue else { return UserDefaults.standard.removeObject(forKey: holdKey) }
 
             UserDefaults.standard.set(newValue, forKey: holdKey)
+        }
+    }
+
+    private static var storedPreventsDimming: Bool {
+        get { UserDefaults.standard.bool(forKey: dimKey) }
+        set { UserDefaults.standard.set(newValue, forKey: dimKey) }
+    }
+
+    private static var dimHold: Double? {
+        get { UserDefaults.standard.object(forKey: dimHoldKey) as? Double }
+        set {
+            guard let newValue else { return UserDefaults.standard.removeObject(forKey: dimHoldKey) }
+
+            UserDefaults.standard.set(newValue, forKey: dimHoldKey)
         }
     }
 
@@ -77,8 +103,10 @@ final class BacklightScheduleManager {
         self.activation = Self.stored
         self.restoreLevel = Self.hold
         self.isForcingOff = Self.hold != nil
+        self.preventsDimming = Self.storedPreventsDimming
 
         observeSystemEvents()
+        applyDimming()
         evaluate()
     }
 
@@ -119,13 +147,40 @@ final class BacklightScheduleManager {
     private func release() {
         guard isForcingOff else { return }
 
-        if let restoreLevel, restoreLevel > 0 {
-            backlight.set(restoreLevel, fadeMilliseconds: Self.fadeMilliseconds)
+        if backlight.get() ?? 0 <= 0 {
+            backlight.set(recoveredLevel, fadeMilliseconds: Self.fadeMilliseconds)
         }
 
         restoreLevel = nil
         Self.hold = nil
         isForcingOff = false
+    }
+
+    private var recoveredLevel: Double {
+        guard let restoreLevel, restoreLevel > 0 else { return Self.fallbackLevel }
+
+        return restoreLevel
+    }
+
+    private func applyDimming() {
+        guard preventsDimming else {
+            if let held = Self.dimHold { backlight.idleDimTime = held }
+
+            return Self.dimHold = nil
+        }
+
+        if Self.dimHold == nil { Self.dimHold = backlight.idleDimTime }
+
+        backlight.idleDimTime = 0
+    }
+
+    private func restoreSystemState() {
+        release()
+
+        guard let held = Self.dimHold else { return }
+
+        backlight.idleDimTime = held
+        Self.dimHold = nil
     }
 
     private func armNextEvaluation(after date: Date) {
@@ -163,7 +218,7 @@ final class BacklightScheduleManager {
         }
 
         let termination = system.addObserver(forName: NSApplication.willTerminateNotification, object: nil, queue: nil) { [weak self] _ in
-            MainActor.assumeIsolated { self?.release() }
+            MainActor.assumeIsolated { self?.restoreSystemState() }
         }
 
         observers.append((system, termination))

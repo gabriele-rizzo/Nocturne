@@ -19,6 +19,12 @@ import Foundation
 
     @objc(isKeyboardBuiltIn:)
     func isKeyboardBuiltIn(_ id: UInt64) -> Bool
+
+    @objc(idleDimTimeForKeyboard:)
+    func idleDimTime(forKeyboard id: UInt64) -> Double
+
+    @objc(setIdleDimTime:forKeyboard:)
+    func setIdleDimTime(_ seconds: Double, forKeyboard id: UInt64) -> Bool
 }
 
 final class KeyboardBacklightController {
@@ -55,5 +61,10 @@ final class KeyboardBacklightController {
         let ok = client.setBrightness(clamped, fadeSpeed: fadeMilliseconds, commit: true, forKeyboard: keyboardID)
         
         return ok ? Double(clamped) : nil
+    }
+
+    var idleDimTime: Double {
+        get { client.idleDimTime(forKeyboard: keyboardID) }
+        set { _ = client.setIdleDimTime(newValue, forKeyboard: keyboardID) }
     }
 }
