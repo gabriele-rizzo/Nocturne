@@ -1,0 +1,23 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: xcodebuild -version
+
+      - name: Test
+        run: |
+          xcodebuild test \
+            -project Nocturne.xcodeproj \
+            -scheme Nocturne \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
