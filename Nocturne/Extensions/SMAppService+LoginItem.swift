@@ -18,4 +18,6 @@ extension SMAppService {
             }
         }
     }
+
+    static var needsApproval: Bool { mainApp.status == .requiresApproval }
 }

@@ -28,7 +28,8 @@ final class BacklightScheduleManager {
         }
     }
 
-    private(set) var isForcingOff = false
+    @ObservationIgnored
+    private var isForcingOff = false
 
     var needsLocation: Bool { activation.mode == .solar && coordinate == nil }
 

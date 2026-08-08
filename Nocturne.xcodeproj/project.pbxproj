@@ -6,33 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		AA000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E09BDDC0302664B400A872F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E09BDDC7302664B400A872F9;
+			remoteInfo = Nocturne;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		E09BDDC8302664B400A872F9 /* Nocturne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nocturne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000000000000000000008 /* NocturneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NocturneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E09BDDC8302664B400A872F9 /* Nocturne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nocturne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E09BDDCA302664B400A872F9 /* Nocturne */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Nocturne;
-			sourceTree = "<group>";
-		};
 		AA0000000000000000000009 /* NocturneTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NocturneTests;
 			sourceTree = "<group>";
 		};
+		E09BDDCA302664B400A872F9 /* Nocturne */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Nocturne;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E09BDDC5302664B400A872F9 /* Frameworks */ = {
+		AA0000000000000000000003 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0000000000000000000003 /* Frameworks */ = {
+		E09BDDC5302664B400A872F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,28 +73,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E09BDDC7302664B400A872F9 /* Nocturne */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E09BDDD3302664B500A872F9 /* Build configuration list for PBXNativeTarget "Nocturne" */;
-			buildPhases = (
-				E09BDDC4302664B400A872F9 /* Sources */,
-				E09BDDC5302664B400A872F9 /* Frameworks */,
-				E09BDDC6302664B400A872F9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				E09BDDCA302664B400A872F9 /* Nocturne */,
-			);
-			name = Nocturne;
-			packageProductDependencies = (
-			);
-			productName = Nocturne;
-			productReference = E09BDDC8302664B400A872F9 /* Nocturne.app */;
-			productType = "com.apple.product-type.application";
-		};
 		AA0000000000000000000001 /* NocturneTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA0000000000000000000005 /* Build configuration list for PBXNativeTarget "NocturneTests" */;
@@ -107,6 +95,28 @@
 			productName = NocturneTests;
 			productReference = AA0000000000000000000008 /* NocturneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E09BDDC7302664B400A872F9 /* Nocturne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E09BDDD3302664B500A872F9 /* Build configuration list for PBXNativeTarget "Nocturne" */;
+			buildPhases = (
+				E09BDDC4302664B400A872F9 /* Sources */,
+				E09BDDC5302664B400A872F9 /* Frameworks */,
+				E09BDDC6302664B400A872F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E09BDDCA302664B400A872F9 /* Nocturne */,
+			);
+			name = Nocturne;
+			packageProductDependencies = (
+			);
+			productName = Nocturne;
+			productReference = E09BDDC8302664B400A872F9 /* Nocturne.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -143,33 +153,15 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXTargetDependency section */
-		AA000000000000000000000A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E09BDDC7302664B400A872F9 /* Nocturne */;
-			targetProxy = AA000000000000000000000B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXContainerItemProxy section */
-		AA000000000000000000000B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E09BDDC0302664B400A872F9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E09BDDC7302664B400A872F9;
-			remoteInfo = Nocturne;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
-		E09BDDC6302664B400A872F9 /* Resources */ = {
+		AA0000000000000000000004 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0000000000000000000004 /* Resources */ = {
+		E09BDDC6302664B400A872F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -179,14 +171,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E09BDDC4302664B400A872F9 /* Sources */ = {
+		AA0000000000000000000002 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0000000000000000000002 /* Sources */ = {
+		E09BDDC4302664B400A872F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,7 +187,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AA000000000000000000000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E09BDDC7302664B400A872F9 /* Nocturne */;
+			targetProxy = AA000000000000000000000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		AA0000000000000000000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2L7G5UP2MD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gabrielerizzo.NocturneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nocturne.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nocturne";
+			};
+			name = Debug;
+		};
+		AA0000000000000000000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2L7G5UP2MD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gabrielerizzo.NocturneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nocturne.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nocturne";
+			};
+			name = Release;
+		};
 		E09BDDD1302664B500A872F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -382,49 +422,18 @@
 			};
 			name = Release;
 		};
-		AA0000000000000000000006 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2L7G5UP2MD;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gabrielerizzo.NocturneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nocturne.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nocturne";
-			};
-			name = Debug;
-		};
-		AA0000000000000000000007 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2L7G5UP2MD;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gabrielerizzo.NocturneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nocturne.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nocturne";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA0000000000000000000005 /* Build configuration list for PBXNativeTarget "NocturneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000006 /* Debug */,
+				AA0000000000000000000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E09BDDC3302664B400A872F9 /* Build configuration list for PBXProject "Nocturne" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -439,15 +448,6 @@
 			buildConfigurations = (
 				E09BDDD4302664B500A872F9 /* Debug */,
 				E09BDDD5302664B500A872F9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AA0000000000000000000005 /* Build configuration list for PBXNativeTarget "NocturneTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA0000000000000000000006 /* Debug */,
-				AA0000000000000000000007 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
