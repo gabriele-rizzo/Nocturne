@@ -51,7 +51,16 @@ cd Nocturne
 open Nocturne.xcodeproj
 ```
 
-Set your own team under **Signing & Capabilities** before building — the project has a development team baked in that won't match yours.
+No signing setup is needed — the project builds ad-hoc out of the box.
+
+To sign with your own Apple developer team instead, create a `Local.xcconfig` next to the project:
+
+```
+DEVELOPMENT_TEAM = YOURTEAMID
+CODE_SIGN_IDENTITY = Apple Development
+```
+
+It's gitignored, so it stays out of the repository.
 
 Run the tests with:
 
