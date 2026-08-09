@@ -1,6 +1,6 @@
 cask "nocturne" do
-  version "1.2.0"
-  sha256 "c54f059475805a482ee41e69f576c7241a8fbe4c83c05af6d2850bbe11ceebc7"
+  version "1.2.1"
+  sha256 "fec12fbd530ec12051e61e35228b0e54f409d8a9451a48ec36801bb3aed5df60"
 
   url "https://github.com/gabriele-rizzo/Nocturne/releases/download/v#{version}/Nocturne.dmg",
       verified: "github.com/gabriele-rizzo/Nocturne/"
