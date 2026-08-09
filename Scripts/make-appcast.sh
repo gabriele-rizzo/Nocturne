@@ -38,7 +38,7 @@ fi
 url="https://github.com/gabriele-rizzo/Nocturne/releases/download/$tag/Nocturne.zip"
 page="https://github.com/gabriele-rizzo/Nocturne/releases/tag/$tag"
 
-previous=$(git describe --tags --abbrev=0 "$tag^" 2>/dev/null || true)
+previous=$(git describe --tags --abbrev=0 --match 'v[0-9]*' "$tag^" 2>/dev/null || true)
 range="$tag"
 
 if [ -n "$previous" ]; then
