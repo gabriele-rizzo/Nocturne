@@ -21,6 +21,13 @@ Nocturne è una piccola app da barra dei menu che spegne la retroilluminazione d
 
 Scarica l'ultima versione, trascina Nocturne nella cartella Applicazioni e aprila. Vive nella barra dei menu, senza finestre e senza icona nel Dock.
 
+In alternativa, con Homebrew:
+
+```
+brew tap gabriele-rizzo/nocturne https://github.com/gabriele-rizzo/Nocturne
+brew install --cask nocturne
+```
+
 La prima volta macOS si rifiuta di aprirla, dicendo che non può verificare se contiene software dannoso. È normale, perché Nocturne non è autenticata. Per sbloccarla apri **Impostazioni di Sistema**, vai su **Privacy e sicurezza** e scorri fino alla sezione sulla sicurezza. Lì trovi la riga che dice che Nocturne è stata bloccata, con accanto il pulsante **Apri comunque**. Premilo, conferma con la password o il Touch ID, e Nocturne parte.
 
 Prima bastava fare clic con il tasto destro e scegliere Apri, ma macOS 15 ha tolto questa scorciatoia: ora si passa dalle Impostazioni di Sistema.

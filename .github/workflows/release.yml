@@ -46,3 +46,15 @@ jobs:
           gh release create "${GITHUB_REF_NAME}" Nocturne.dmg Nocturne.zip appcast.xml \
             --title "${GITHUB_REF_NAME}" \
             --generate-notes
+
+      - name: Point the cask at the release
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          ./Scripts/update-cask.sh "${GITHUB_REF_NAME}"
+          git add Casks/nocturne.rb
+          git diff --cached --quiet || git commit -m "Point the cask at ${GITHUB_REF_NAME}"
+          git push origin main

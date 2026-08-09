@@ -22,6 +22,13 @@ Nocturne is a small menu bar app that turns the built-in keyboard backlight off 
 
 Download the latest release, drag Nocturne into your Applications folder, and launch it. It lives in the menu bar and has no window and no Dock icon.
 
+With Homebrew instead:
+
+```
+brew tap gabriele-rizzo/nocturne https://github.com/gabriele-rizzo/Nocturne
+brew install --cask nocturne
+```
+
 The first time you open it, macOS will refuse, saying it cannot check the app for malicious software. This is expected: Nocturne isn't notarized. To let it through, open **System Settings**, go to **Privacy & Security**, and scroll down to the security section. There you'll find a line saying Nocturne was blocked, with an **Open Anyway** button next to it. Click that, confirm with your password or Touch ID, and Nocturne starts.
 
 Control-clicking the app and choosing Open used to work, but macOS 15 removed that shortcut, so System Settings is the way now.
