@@ -1,0 +1,125 @@
+---
+import menuBarIcon from "../../../docs/menu-bar-icon.png";
+import menu from "../../../docs/menu.png";
+import customSchedule from "../../../docs/custom-schedule.png";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { homePageContent, identity } from "../config";
+import Layout from "../layout.astro";
+import { latest } from "../releases";
+import { url } from "../url";
+
+const release = latest();
+const download = `${identity.repo}/releases/latest`;
+---
+
+<Layout seo={homePageContent.seo}>
+    <section class="px-6 pt-16 pb-12 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div>
+                <h1 class="font-bold text-4xl lg:text-5xl tracking-tight mb-3">{identity.name}</h1>
+                <p class="text-lg text-muted mb-7">{identity.tagline}</p>
+                <p class="max-w-xl mb-9">{homePageContent.description}</p>
+                <div class="flex flex-wrap items-center gap-5">
+                    <a
+                        href={download}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-accent-fg font-medium hover:opacity-85 transition-opacity"
+                    >
+                        <Icon name="mdi:apple" width={18} height={18} aria-hidden="true" />
+                        <span>Download{release ? ` ${release.version}` : ""}</span>
+                    </a>
+                    <p class="text-sm text-muted">Requires {homePageContent.requirement}</p>
+                </div>
+            </div>
+            <Image src={menu} alt="The Nocturne menu" densities={[2]} class="rounded-xl border border-line w-64 lg:w-72 justify-self-start lg:justify-self-center" />
+        </div>
+    </section>
+
+    <section class="px-6 py-12 max-w-6xl mx-auto">
+        <Image src={menuBarIcon} alt="The Nocturne icon in the menu bar" class="rounded-xl border border-line w-full" />
+        <p class="text-sm text-muted mt-4">
+            Nocturne puts an icon in the right side of your menu bar. Click it to choose when the backlight should be off.
+        </p>
+    </section>
+
+    <section class="px-6 py-14 max-w-6xl mx-auto">
+        <h2 class="font-semibold text-2xl tracking-tight mb-10">Four schedules</h2>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-9">
+            {
+                homePageContent.schedules.map((schedule) => (
+                    <div>
+                        <h3 class="font-medium mb-2">{schedule.title}</h3>
+                        <p class="text-muted text-sm">{schedule.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="px-6 py-14 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+            <div>
+                <h2 class="font-semibold text-2xl tracking-tight mb-5">Custom hours</h2>
+                <p class="text-muted text-sm">
+                    Custom schedules are set from the submenu, one hour for the start and one for the end, on the hour or the half hour.
+                    Windows that run past midnight are fine, so 22:00 to 07:00 works as you'd expect.
+                </p>
+            </div>
+            <Image
+                src={customSchedule}
+                alt="The Custom submenu, with the From hour list open"
+                densities={[2]}
+                class="rounded-xl border border-line w-auto max-h-[26rem] justify-self-start lg:justify-self-end"
+            />
+        </div>
+    </section>
+
+    <section class="px-6 py-14 max-w-6xl mx-auto">
+        <h2 class="font-semibold text-2xl tracking-tight mb-10">Along the way</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-9">
+            {
+                homePageContent.features.map((feature) => (
+                    <div>
+                        <h3 class="font-medium mb-2">{feature.title}</h3>
+                        <p class="text-muted text-sm">{feature.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="px-6 py-14 max-w-6xl mx-auto">
+        <h2 class="font-semibold text-2xl tracking-tight mb-10">Installing</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+            <div>
+                <p class="text-muted text-sm mb-6">
+                    Download the latest release, drag Nocturne into your Applications folder, and launch it. It lives in the menu bar and
+                    has no window and no Dock icon.
+                </p>
+                <div class="p-5 rounded-xl border border-line bg-surface">
+                    <p class="text-sm font-medium mb-2">The first launch</p>
+                    <p class="text-sm text-muted">{homePageContent.gatekeeper}</p>
+                </div>
+            </div>
+            <div>
+                <p class="text-muted text-sm mb-6">With Homebrew instead:</p>
+                <pre
+                    class="p-5 rounded-xl border border-line bg-surface text-sm whitespace-pre-wrap break-words"><code>{homePageContent.homebrew.join("\n")}</code></pre>
+                <p class="text-sm text-muted mt-4">
+                    Homebrew asks you to trust a tap that isn't one of its own before it will run the cask.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 py-14 max-w-6xl mx-auto">
+        <h2 class="font-semibold text-2xl tracking-tight mb-5">Updates</h2>
+        <p class="text-muted text-sm max-w-2xl mb-7">{homePageContent.updates}</p>
+        <a href={url("/changelog")} class="inline-flex items-center gap-2 text-sm text-muted hover:text-fg transition-colors">
+            <span>See what's changed</span>
+            <Icon name="mdi:arrow-right" width={18} height={18} aria-hidden="true" />
+        </a>
+    </section>
+</Layout>

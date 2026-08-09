@@ -11,7 +11,7 @@ Nocturne is a small menu bar app that turns the built-in keyboard backlight off 
 ![Platform](https://img.shields.io/badge/platform-macOS-blue?style=flat-square)
 ![Requirements](https://img.shields.io/badge/requirements-macOS%2015.7%2B-fa4e49?style=flat-square)
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-lightgrey?style=flat-square)](LICENSE)
-<!-- [![Website](https://img.shields.io/badge/Website-015FBA?style=flat-square)](https://example.com) -->
+[![Website](https://img.shields.io/badge/Website-015FBA?style=flat-square)](https://gabriele-rizzo.github.io/Nocturne/)
 
 > [!NOTE]
 > Nocturne isn't notarized, so macOS blocks it the first time you open it. [Installation](#installation) has the one time fix.

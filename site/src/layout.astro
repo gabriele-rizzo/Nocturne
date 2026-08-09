@@ -1,0 +1,133 @@
+---
+import "./globals.css";
+
+import icon from "./assets/icon.png";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import NavLink from "./components/nav-link.astro";
+import { identity, navBarLinks, socialLinks } from "./config";
+import { url } from "./url";
+
+interface Props {
+    seo: SEOInfo;
+}
+
+const { seo } = Astro.props;
+const ogImage = new URL(icon.src, Astro.site).href;
+const current = Astro.url.pathname;
+---
+
+<script>
+    const linkMenuButton = document.getElementById("link-menu-button") as HTMLButtonElement;
+    const linkMenu = document.getElementById("link-menu") as HTMLDivElement;
+    const openIndicator = document.getElementById("open-indicator") as HTMLSpanElement;
+
+    const close = () => {
+        linkMenu.classList.add("pointer-events-none", "opacity-0");
+        linkMenuButton.setAttribute("aria-expanded", "false");
+        openIndicator.innerText = "+";
+    };
+
+    linkMenuButton.addEventListener("click", () => {
+        if (linkMenu.classList.contains("opacity-0")) {
+            linkMenu.classList.remove("pointer-events-none", "opacity-0");
+            linkMenuButton.setAttribute("aria-expanded", "true");
+            openIndicator.innerText = "−";
+        } else {
+            close();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        const target = event.target as Node;
+        if (!linkMenuButton.contains(target) && !linkMenu.contains(target)) close();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") close();
+    });
+</script>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href={icon.src} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary" />
+    </head>
+
+    <body class="bg-bg text-fg">
+        <header>
+            <div class="px-6 py-5 max-w-6xl mx-auto flex items-center justify-between gap-6">
+                <a href={url("/")} class="flex items-center gap-2.5 shrink-0">
+                    <Image src={icon} alt="" width={30} height={30} densities={[2, 3]} class="w-[30px] h-[30px]" />
+                    <span class="font-semibold">{identity.name}</span>
+                </a>
+                <nav>
+                    <ul class="hidden sm:flex sm:items-center sm:gap-1">
+                        {navBarLinks.map((link) => <li><NavLink link={link} current={current} /></li>)}
+                    </ul>
+                    <div class="relative sm:hidden">
+                        <button
+                            id="link-menu-button"
+                            aria-expanded="false"
+                            aria-controls="link-menu"
+                            class="font-medium text-muted hover:text-fg transition-colors px-3 py-2"
+                        >
+                            Menu <span id="open-indicator">+</span>
+                        </button>
+                        <div
+                            id="link-menu"
+                            class="absolute p-2 right-0 bg-surface border border-line rounded-lg w-48 transition-opacity duration-200 opacity-0 pointer-events-none z-40"
+                        >
+                            <ul>
+                                {navBarLinks.map((link) => <li><NavLink link={link} current={current} block /></li>)}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="mb-12">
+            <slot />
+        </main>
+
+        <footer class="border-t border-line">
+            <div class="px-6 py-5 max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p class="text-sm text-muted">
+                    Released under the <a
+                        class="underline underline-offset-4 hover:text-fg transition-colors"
+                        href={`${identity.repo}/blob/main/LICENSE`}
+                        target="_blank"
+                        rel="noopener noreferrer">PolyForm Noncommercial License</a
+                    >.
+                </p>
+                <div class="flex items-center gap-4">
+                    {
+                        socialLinks.map((link) => (
+                            <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={link.title}
+                                class="text-muted hover:text-fg transition-colors"
+                            >
+                                <Icon name={link.icon} width={22} height={22} />
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

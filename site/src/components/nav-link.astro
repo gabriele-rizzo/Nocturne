@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+import { url } from "../url";
+
+interface Props {
+    link: NavBarLink;
+    current: string;
+    block?: boolean;
+}
+
+const { link, current, block } = Astro.props;
+
+const href = url(link.url);
+const normalise = (path: string) => path.replace(/\/+$/, "") || "/";
+const active = !link.external && normalise(href) === normalise(current);
+---
+
+<a
+    href={href}
+    target={link.external ? "_blank" : "_self"}
+    rel={link.external ? "noopener noreferrer" : undefined}
+    aria-current={active ? "page" : undefined}
+    class:list={[
+        "flex items-center gap-1.5 rounded-lg text-sm transition-colors",
+        block ? "px-4 py-2.5" : "px-3 py-1.5",
+        active ? "bg-surface text-fg font-medium" : "text-muted hover:text-fg",
+    ]}
+>
+    <span>{link.title}</span>
+    {link.external && <Icon name="mdi:arrow-top-right" width={14} height={14} aria-hidden="true" />}
+</a>
