@@ -11,6 +11,7 @@ Nocturne è una piccola app da barra dei menu che spegne la retroilluminazione d
 ![Piattaforma](https://img.shields.io/badge/piattaforma-macOS-blue?style=flat-square)
 ![Requisiti](https://img.shields.io/badge/requisiti-macOS%2015.7%2B-fa4e49?style=flat-square)
 [![Licenza](https://img.shields.io/badge/licenza-PolyForm%20Noncommercial-lightgrey?style=flat-square)](LICENSE)
+[![Sito](https://img.shields.io/badge/Sito-015FBA?style=flat-square)](https://gabriele-rizzo.github.io/Nocturne/)
 
 > [!NOTE]
 > Nocturne non è autenticata da Apple, quindi macOS la blocca la prima volta che la apri. In [Installazione](#installazione) trovi come sbloccarla, una volta sola.
