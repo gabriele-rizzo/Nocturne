@@ -114,7 +114,7 @@ Pushing a `v` tag is the whole process. The workflow builds the disk image, sign
 
 The version comes from the tag, so there is nothing to edit first. `Scripts/version.sh` turns `v1.2.0` into a marketing version of `1.2.0` and a build number of `10200`, packing major, minor and patch so the number always rises. The version in the project file is only what local and rolling builds report.
 
-Release notes are the commit subjects since the previous `v` tag, with the version bumps left out, so those subjects are read by anyone updating.
+Release notes are the commit subjects since the previous `v` tag, with the version bumps and the cask pointers left out, so those subjects are read by anyone updating. `Scripts/release-notes.sh` decides what counts, and both the appcast and the website's changelog call it, so the two never drift apart.
 
 Signing the update needs the Sparkle private key in a repository secret named `SPARKLE_PRIVATE_KEY`, matching the public key in `Signing.xcconfig`.
 

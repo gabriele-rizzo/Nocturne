@@ -114,7 +114,7 @@ Basta pubblicare un tag `v`. Il workflow compila l'immagine disco, firma uno zip
 
 La versione arriva dal tag, quindi non c'è niente da modificare prima. `Scripts/version.sh` trasforma `v1.2.0` in una versione `1.2.0` e in un numero di build `10200`, impacchettando major, minor e patch in modo che il numero cresca sempre. La versione nel file di progetto è solo quella che riportano le build locali.
 
-Le note di rilascio sono gli oggetti dei commit dal tag `v` precedente, esclusi quelli che alzano la versione, quindi quegli oggetti li legge chi aggiorna.
+Le note di rilascio sono gli oggetti dei commit dal tag `v` precedente, esclusi quelli che alzano la versione e quelli che puntano il cask, quindi quegli oggetti li legge chi aggiorna. A decidere che cosa conta è `Scripts/release-notes.sh`, che viene chiamato sia dall'appcast sia dal changelog del sito, così i due non si allontanano mai.
 
 Per firmare l'aggiornamento serve la chiave privata di Sparkle in un segreto del repository chiamato `SPARKLE_PRIVATE_KEY`, corrispondente alla chiave pubblica in `Signing.xcconfig`.
 

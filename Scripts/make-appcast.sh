@@ -38,18 +38,7 @@ fi
 url="https://github.com/gabriele-rizzo/Nocturne/releases/download/$tag/Nocturne.zip"
 page="https://github.com/gabriele-rizzo/Nocturne/releases/tag/$tag"
 
-previous=$(git describe --tags --abbrev=0 --match 'v[0-9]*' "$tag^" 2>/dev/null || true)
-range="$tag"
-
-if [ -n "$previous" ]; then
-    range="$previous..$tag"
-fi
-
-notes=$(git log --no-merges --format='%s' "$range" | grep -v '^Bump the version' || true)
-
-if [ -z "$notes" ]; then
-    notes="Maintenance and fixes."
-fi
+notes=$(./Scripts/release-notes.sh "$tag")
 
 items=$(printf '%s\n' "$notes" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's|.*|            <li>&</li>|')
 
