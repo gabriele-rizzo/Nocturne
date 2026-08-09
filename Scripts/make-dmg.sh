@@ -10,11 +10,20 @@ trap 'rm -rf "$staging" "$scratch"' EXIT
 
 mkdir -p "$derived"
 
+version=()
+
+if [ -n "${RELEASE_TAG:-}" ]; then
+    read -r short build <<< "$(Scripts/version.sh "$RELEASE_TAG")"
+    version=("MARKETING_VERSION=$short" "CURRENT_PROJECT_VERSION=$build")
+    echo "building $short ($build) from $RELEASE_TAG"
+fi
+
 xcodebuild build \
     -project Nocturne.xcodeproj \
     -scheme Nocturne \
     -configuration Release \
     -derivedDataPath "$derived" \
+    ${version[@]+"${version[@]}"} \
     >/dev/null
 
 app="$derived/Build/Products/Release/Nocturne.app"

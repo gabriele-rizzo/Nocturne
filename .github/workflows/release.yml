@@ -17,6 +17,8 @@ jobs:
           fetch-depth: 0
 
       - name: Build DMG
+        env:
+          RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
         run: ./Scripts/make-dmg.sh
 
       - name: Publish rolling build
