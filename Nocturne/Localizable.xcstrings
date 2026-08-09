@@ -273,23 +273,6 @@
         }
       }
     },
-    "About Nocturne": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About Nocturne"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informazioni su Nocturne"
-          }
-        }
-      }
-    },
     "Your keyboard backlight, on a schedule.": {
       "extractionState": "manual",
       "localizations": {
@@ -405,6 +388,74 @@
           "stringUnit": {
             "state": "translated",
             "value": "Impostazioni…"
+          }
+        }
+      }
+    },
+    "Check for updates automatically?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for updates automatically?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controllare gli aggiornamenti automaticamente?"
+          }
+        }
+      }
+    },
+    "Nocturne can look for new versions on its own. You can check yourself, and change this, from Settings in the menu.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nocturne can look for new versions on its own. You can check yourself, and change this, from Settings in the menu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nocturne può cercare da sola le nuove versioni. Puoi controllare tu, e cambiare questa scelta, da Impostazioni nel menu."
+          }
+        }
+      }
+    },
+    "Don't Check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Don't Check"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Non controllare"
+          }
+        }
+      }
+    },
+    "Nocturne Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nocturne Settings"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impostazioni Nocturne"
           }
         }
       }

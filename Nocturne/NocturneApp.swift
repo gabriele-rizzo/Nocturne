@@ -26,7 +26,7 @@ struct NocturneApp: App {
 
             LoginItemToggle()
 
-            AboutButton()
+            SettingsButton()
 
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
@@ -36,8 +36,8 @@ struct NocturneApp: App {
             MenuBarLabel(manager: manager)
         }
 
-        Window("About Nocturne", id: AboutButton.window) {
-            AboutView()
+        Window("Nocturne Settings", id: SettingsButton.window) {
+            SettingsView()
         }
         .windowResizability(.contentSize)
         .restorationBehavior(.disabled)

@@ -1,5 +1,5 @@
 //
-//  AboutView.swift
+//  SettingsView.swift
 //  Nocturne
 //
 //  Created by Gabriele Rizzo on 09/08/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AboutView: View {
+struct SettingsView: View {
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 12) {
