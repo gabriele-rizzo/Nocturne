@@ -26,8 +26,11 @@ With Homebrew instead:
 
 ```
 brew tap gabriele-rizzo/nocturne https://github.com/gabriele-rizzo/Nocturne
+brew trust gabriele-rizzo/nocturne
 brew install --cask nocturne
 ```
+
+Homebrew asks you to trust a tap that isn't one of its own before it will run the cask.
 
 The first time you open it, macOS will refuse, saying it cannot check the app for malicious software. This is expected: Nocturne isn't notarized. To let it through, open **System Settings**, go to **Privacy & Security**, and scroll down to the security section. There you'll find a line saying Nocturne was blocked, with an **Open Anyway** button next to it. Click that, confirm with your password or Touch ID, and Nocturne starts.
 

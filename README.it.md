@@ -25,8 +25,11 @@ In alternativa, con Homebrew:
 
 ```
 brew tap gabriele-rizzo/nocturne https://github.com/gabriele-rizzo/Nocturne
+brew trust gabriele-rizzo/nocturne
 brew install --cask nocturne
 ```
+
+Homebrew chiede di dare fiducia a un tap che non è tra i suoi prima di eseguire il cask.
 
 La prima volta macOS si rifiuta di aprirla, dicendo che non può verificare se contiene software dannoso. È normale, perché Nocturne non è autenticata. Per sbloccarla apri **Impostazioni di Sistema**, vai su **Privacy e sicurezza** e scorri fino alla sezione sulla sicurezza. Lì trovi la riga che dice che Nocturne è stata bloccata, con accanto il pulsante **Apri comunque**. Premilo, conferma con la password o il Touch ID, e Nocturne parte.
 
