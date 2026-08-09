@@ -36,6 +36,22 @@ else
     signature=$("$sign" Nocturne.zip)
 fi
 url="https://github.com/gabriele-rizzo/Nocturne/releases/download/$tag/Nocturne.zip"
+page="https://github.com/gabriele-rizzo/Nocturne/releases/tag/$tag"
+
+previous=$(git describe --tags --abbrev=0 "$tag^" 2>/dev/null || true)
+range="$tag"
+
+if [ -n "$previous" ]; then
+    range="$previous..$tag"
+fi
+
+notes=$(git log --no-merges --format='%s' "$range" | grep -v '^Bump the version' || true)
+
+if [ -z "$notes" ]; then
+    notes="Maintenance and fixes."
+fi
+
+items=$(printf '%s\n' "$notes" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's|.*|            <li>&</li>|')
 
 cat > appcast.xml <<XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,6 +67,13 @@ cat > appcast.xml <<XML
             <sparkle:version>$build</sparkle:version>
             <sparkle:shortVersionString>$short</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>$minimum</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+        <h3>Nocturne $short</h3>
+        <ul>
+$items
+        </ul>
+        <p><a href="$page">Full release notes</a></p>
+        ]]></description>
             <pubDate>$(date -u "+%a, %d %b %Y %H:%M:%S +0000")</pubDate>
             <enclosure url="$url" type="application/octet-stream" $signature />
         </item>
