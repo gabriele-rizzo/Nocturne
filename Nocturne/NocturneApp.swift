@@ -26,6 +26,8 @@ struct NocturneApp: App {
 
             LoginItemToggle()
 
+            CheckForUpdatesButton()
+
             AboutButton()
 
             Button("Quit") {
