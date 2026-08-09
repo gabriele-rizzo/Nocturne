@@ -3,7 +3,7 @@ name: Site
 on:
   push:
     branches: [main]
-    paths: ['site/**', '.github/workflows/site.yml']
+    paths: ['site/**', 'docs/**', '.github/workflows/site.yml']
   workflow_run:
     workflows: [Release]
     types: [completed]
@@ -21,7 +21,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       startsWith(github.event.workflow_run.head_branch, 'v'))
     steps:
       - uses: actions/checkout@v5
         with:
