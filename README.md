@@ -65,6 +65,8 @@ Custom schedules are set from the submenu, one hour for the start and one for th
 
 <img src="docs/custom-schedule.png" alt="The Custom submenu, with the From hour list open" width="385"/>
 
+**Pause for an Hour** puts the schedule aside and gives the backlight back for an hour, for when you need to see the keys right now. It appears whenever a schedule could be holding the light off, and turns into **Resume Schedule** while it's running. The schedule picks up again on its own when the hour is up.
+
 **Prevent Dimming** stops macOS from fading the keyboard backlight after a minute of inactivity. It's off by default, and Nocturne puts your original setting back when it quits.
 
 **Launch at Login** starts Nocturne automatically. macOS may ask you to approve it in System Settings the first time.

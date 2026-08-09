@@ -40,6 +40,10 @@ final class BacklightScheduleManager {
         }
     }
 
+    private(set) var pausedUntil: Date?
+
+    var paused: Bool { pausedUntil != nil }
+
     var needsLocation: Bool { activation.mode == .solar && coordinate == nil }
 
     private static let fadeMilliseconds: Int32 = 500
@@ -128,14 +132,30 @@ final class BacklightScheduleManager {
         }
     }
 
+    func pause(for interval: TimeInterval, now: Date = Date()) {
+        pausedUntil = now.addingTimeInterval(interval)
+        evaluate(now: now)
+    }
+
+    func resume(now: Date = Date()) {
+        pausedUntil = nil
+        evaluate(now: now)
+    }
+
     func evaluate(now: Date = Date()) {
-        switch suppression(now) {
-        case .never:
+        if let until = pausedUntil, until <= now { pausedUntil = nil }
+
+        if paused {
             release()
-        case .always:
-            forceOff()
-        case .during(let window):
-            if window.contains(now) { forceOff() } else { release() }
+        } else {
+            switch suppression(now) {
+            case .never:
+                release()
+            case .always:
+                forceOff()
+            case .during(let window):
+                if window.contains(now) { forceOff() } else { release() }
+            }
         }
 
         armNextEvaluation(after: now)
@@ -204,9 +224,7 @@ final class BacklightScheduleManager {
         timer?.invalidate()
         timer = nil
 
-        guard case .during(let window) = suppression(date),
-              let boundary = window.nextBoundary(after: date)
-        else { return }
+        guard let boundary = nextBoundary(after: date) else { return }
 
         let timer = Timer(fire: boundary, interval: 0, repeats: false) { [weak self] _ in
             MainActor.assumeIsolated { self?.evaluate() }
@@ -214,6 +232,14 @@ final class BacklightScheduleManager {
 
         RunLoop.main.add(timer, forMode: .common)
         self.timer = timer
+    }
+
+    private func nextBoundary(after date: Date) -> Date? {
+        if let pausedUntil { return pausedUntil }
+
+        guard case .during(let window) = suppression(date) else { return nil }
+
+        return window.nextBoundary(after: date)
     }
 
     private func observeSystemEvents() {

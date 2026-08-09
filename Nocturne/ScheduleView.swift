@@ -27,9 +27,20 @@ struct ScheduleView: View {
             if scheduler.needsLocation {
                 Button("Enable Location…") { NSWorkspace.shared.open(.locationSettings) }
             }
+
+            pause
         }
 
         Toggle("Prevent Dimming", isOn: $scheduler.preventsDimming)
+    }
+
+    @ViewBuilder
+    private var pause: some View {
+        if scheduler.paused {
+            Button("Resume Schedule") { scheduler.resume() }
+        } else if scheduler.activation.mode != .on {
+            Button("Pause for an Hour") { scheduler.pause(for: 3600) }
+        }
     }
 
     private var window: DayWindow { scheduler.activation.window }

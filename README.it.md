@@ -64,6 +64,8 @@ Gli orari personalizzati si impostano dal sottomenu, un'ora di inizio e una di f
 
 <img src="docs/custom-schedule.png" alt="Il sottomenu Personalizzato, con l'elenco delle ore di inizio aperto" width="385"/>
 
+**Sospendi per un'ora** mette da parte la programmazione e restituisce la retroilluminazione per un'ora, per quando ti serve vedere i tasti adesso. Compare quando una programmazione potrebbe tenere spenta la luce, e diventa **Riprendi la programmazione** mentre è attiva. Passata l'ora, la programmazione riprende da sola.
+
 **Impedisci attenuazione** evita che macOS abbassi la retroilluminazione dopo un minuto di inattività. È disattivata di default, e Nocturne rimette la tua impostazione originale quando esce.
 
 **Apri al login** avvia Nocturne automaticamente. La prima volta macOS potrebbe chiederti di approvarla nelle Impostazioni di Sistema.

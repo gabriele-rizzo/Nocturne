@@ -374,6 +374,40 @@
           }
         }
       }
+    },
+    "Pause for an Hour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause for an Hour"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sospendi per un'ora"
+          }
+        }
+      }
+    },
+    "Resume Schedule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume Schedule"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riprendi la programmazione"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
