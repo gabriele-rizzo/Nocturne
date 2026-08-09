@@ -61,9 +61,9 @@ Sunset to sunrise needs your location to work out when the sun rises and sets. N
 
 ### Updates
 
-Nocturne keeps itself up to date. It checks for a new version in the background and offers it when there is one, then downloads and installs it in place, so there is nothing to drag into your Applications folder a second time.
+Nocturne can update itself, and it downloads and installs in place, so there is nothing to drag into your Applications folder a second time.
 
-**About…** in the menu, or ⌘A, opens a window with the controls. From there you can check straight away, stop the background checks, or let updates install without being asked first.
+It doesn't check on its own unless you ask it to. **About…** in the menu, or ⌘A, opens a window with the controls. From there you can check right now, turn on background checking, and let updates install without being asked first.
 
 Every release is signed with a key that only the project holds, and Nocturne installs nothing that fails to match it.
 
