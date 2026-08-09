@@ -2,7 +2,7 @@
 import "./globals.css";
 
 import icon from "./assets/icon.png";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import NavLink from "./components/nav-link.astro";
 import { identity, navBarLinks, socialLinks } from "./config";
@@ -13,8 +13,12 @@ interface Props {
 }
 
 const { seo } = Astro.props;
-const ogImage = new URL(icon.src, Astro.site).href;
 const current = Astro.url.pathname;
+
+const [favicon, touchIcon, ogSource] = await Promise.all(
+    [32, 180, 512].map((size) => getImage({ src: icon, width: size, height: size, format: "png" })),
+);
+const ogImage = new URL(ogSource.src, Astro.site).href;
 ---
 
 <script>
@@ -52,7 +56,8 @@ const current = Astro.url.pathname;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" href={icon.src} />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon.src} />
+        <link rel="apple-touch-icon" sizes="180x180" href={touchIcon.src} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
