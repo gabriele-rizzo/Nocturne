@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Check version derivation
+        run: ./Scripts/test-version.sh
+
       - name: Show toolchain
         run: xcodebuild -version
 

@@ -3,6 +3,8 @@
 # Nocturne
 ### Your keyboard backlight, on a schedule.
 
+*Leggimi in [italiano](README.it.md).*
+
 Nocturne is a small menu bar app that turns the built-in keyboard backlight off when you don't need it: all day, on a schedule you set, or from sunrise to sunset wherever you are. It hands it back untouched when you're done.
 
 [![Download](https://img.shields.io/badge/download-latest-brightgreen?style=flat-square)](https://github.com/gabriele-rizzo/Nocturne/releases/latest)
@@ -93,6 +95,16 @@ Run the tests with:
 ```
 xcodebuild test -project Nocturne.xcodeproj -scheme Nocturne -destination 'platform=macOS'
 ```
+
+### Releasing
+
+Pushing a `v` tag is the whole process. The workflow builds the disk image, signs a zip for the updater, writes the appcast and publishes all three.
+
+The version comes from the tag, so there is nothing to edit first. `Scripts/version.sh` turns `v1.2.0` into a marketing version of `1.2.0` and a build number of `10200`, packing major, minor and patch so the number always rises. The version in the project file is only what local and rolling builds report.
+
+Release notes are the commit subjects since the previous `v` tag, with the version bumps left out, so those subjects are read by anyone updating.
+
+Signing the update needs the Sparkle private key in a repository secret named `SPARKLE_PRIVATE_KEY`, matching the public key in `Signing.xcconfig`.
 
 ### FAQ
 
