@@ -358,23 +358,6 @@
         }
       }
     },
-    "About…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About…"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informazioni…"
-          }
-        }
-      }
-    },
     "Pause for an Hour": {
       "extractionState": "manual",
       "localizations": {
@@ -405,6 +388,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Riprendi la programmazione"
+          }
+        }
+      }
+    },
+    "Settings…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impostazioni…"
           }
         }
       }

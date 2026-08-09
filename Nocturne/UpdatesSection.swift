@@ -21,6 +21,8 @@ struct UpdatesSection: View {
         VStack(spacing: 8) {
             Divider()
 
+            Button("Check for Updates…") { UpdateManager.shared.check() }
+
             VStack(alignment: .leading, spacing: 4) {
                 Toggle("Check automatically", isOn: checksAutomatically)
 

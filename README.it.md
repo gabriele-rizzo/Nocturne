@@ -76,7 +76,7 @@ Dal tramonto all'alba ha bisogno della tua posizione per calcolare quando sorge 
 
 Nocturne sa aggiornarsi da sola: scarica e installa sul posto, quindi non devi trascinare niente nella cartella Applicazioni una seconda volta.
 
-Non controlla di sua iniziativa finché non glielo permetti. Dopo che l'hai usata per un po', Nocturne fa la domanda una volta, e se dici di no non insiste. **Controlla aggiornamenti…** nel menu guarda quando vuoi tu, e **Informazioni…**, oppure ⌘A, apre una finestra dove puoi cambiare idea, o lasciare che gli aggiornamenti si installino senza chiedere.
+Non controlla di sua iniziativa finché non glielo permetti. Dopo che l'hai usata per un po', Nocturne fa la domanda una volta, e se dici di no non insiste. **Impostazioni…** nel menu, oppure ⌘A, apre una finestra dove puoi controllare subito, cambiare idea sui controlli automatici, o lasciare che gli aggiornamenti si installino senza chiedere.
 
 Ogni versione è firmata con una chiave che ha solo il progetto, e Nocturne non installa nulla che non corrisponda.
 

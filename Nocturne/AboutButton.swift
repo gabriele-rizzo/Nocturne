@@ -13,7 +13,7 @@ struct AboutButton: View {
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
-        Button("About…") {
+        Button("Settings…") {
             openWindow(id: Self.window)
             NSApplication.shared.activate()
         }
