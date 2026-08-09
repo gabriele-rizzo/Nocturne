@@ -18,8 +18,8 @@ struct ScheduleView: View {
             }
             
             Menu {
-                Picker("From", selection: startHour) { hours(excluding: window.end.hour) }
-                Picker("To", selection: endHour) { hours(excluding: window.start.hour) }
+                Picker("From", selection: start) { times(excluding: window.end) }
+                Picker("To", selection: end) { times(excluding: window.start) }
             } label: {
                 customTitle
             }
@@ -42,18 +42,19 @@ struct ScheduleView: View {
         return Text(verbatim: "✓ ") + title
     }
 
-    private func hours(excluding conflict: Int) -> some View {
-        ForEach((0..<24).filter { $0 != conflict }, id: \.self) { hour in
-            Text(label(hour)).tag(hour)
+    private func times(excluding conflict: DayTime) -> some View {
+        ForEach(DayTime.steps.filter { $0 != conflict }, id: \.minutesSinceMidnight) { time in
+            Text(label(time)).tag(time.minutesSinceMidnight)
         }
     }
 
-    private func label(_ hour: Int) -> String {
+    private func label(_ time: DayTime) -> String {
         var components = DateComponents()
         components.year = 2000
         components.month = 1
         components.day = 1
-        components.hour = hour
+        components.hour = time.hour
+        components.minute = time.minute
 
         guard let date = Calendar.current.date(from: components) else { return "" }
 
@@ -70,21 +71,21 @@ struct ScheduleView: View {
         }
     }
 
-    private var startHour: Binding<Int> {
+    private var start: Binding<Int> {
         Binding {
-            window.start.hour
+            window.start.minutesSinceMidnight
         } set: { chosen in
-            guard let time = DayTime(hour: chosen, minute: 0), time != window.end else { return }
+            guard let time = DayTime(minutesSinceMidnight: chosen), time != window.end else { return }
 
             apply(DayWindow(start: time, end: window.end))
         }
     }
 
-    private var endHour: Binding<Int> {
+    private var end: Binding<Int> {
         Binding {
-            window.end.hour
+            window.end.minutesSinceMidnight
         } set: { chosen in
-            guard let time = DayTime(hour: chosen, minute: 0), time != window.start else { return }
+            guard let time = DayTime(minutesSinceMidnight: chosen), time != window.start else { return }
 
             apply(DayWindow(start: window.start, end: time))
         }
